@@ -25,7 +25,9 @@ function App() {
     formData.append('title', title)
 
     await axios.post('http://localhost:3001/add-image', formData)
-    fetchImages();
+    setTimeout(() => fetchImages(), 2000)
+    setImage("")
+    setTitle("")
   }
 
   useEffect(() => {
@@ -62,12 +64,12 @@ function App() {
           />
 
           <Button color="secondary" variant="contained" component="span">
-            Choose Image
+           {image ? "Image Selected" : "Choose Image"}
           </Button>
         </label>
         <Button type="submit" variant='outlined'>Add Image</Button>
       </Box>
-      <ImageList sx={{ width: 600, height: 450 }}>
+      <ImageList sx={{ width: 750, height: 550 }}>
         <ImageListItem key="Subheader" cols={2}>
           <ListSubheader component="div">December</ListSubheader>
         </ImageListItem>
